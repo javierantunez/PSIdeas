@@ -47,7 +47,7 @@ foreach ($hashresult in $hashesNTLM) {
                 Write-Host "Password found! : $pass"
                 # Add hash plus password in "hash:cleartext" format (suitable to add to hashcat.potfile).
                 $hashPotFormat = $hashresult +":" + $pass
-                $newpassespotfile = $hashPotFormat
+                $newpassespotfile += $hashPotFormat
                 # Temporary save to file to keep partial information
                 # TODO: Resume logic (open temp file and avoid to retest existing hashes)
                 $hashPotFormat | out-file $outpathpotfileTemp -encoding ASCII -Append 
